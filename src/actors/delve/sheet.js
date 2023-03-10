@@ -1,4 +1,5 @@
 import sheetHTML from './sheet.html';
+import './delve.sass';
 import HeartActorSheet from '../base/sheet';
 import template from './template.json';
 

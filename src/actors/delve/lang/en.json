@@ -1,6 +1,18 @@
 {
     "delve": {
         "label-single": "Delve",
-        "label-multiple": "Delves"
+        "label-multiple": "Delves",
+        "name": "Name",
+        "resistance": "Resistance",
+        "defaultStress": "Default Stress",
+        "description":"Description",
+        "domain":{
+            "label-single":"Domain",
+            "label-multiple":"Domains"
+        },
+        "tier":"Tier",
+        "notes":"Notes",
+        "inactive-items": "Inactive Items",
+        "inactive-items-description": "Here you'll find items that were directly added to the character sheet, but were marked inactive (which hides them from the normal layout)."
     }
 }
