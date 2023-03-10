@@ -75,6 +75,10 @@
             {{editor actor.system.description target="system.description" button=true editable=editable owner=owner}}
         </div>
 
+        <div class="section center wide notes">
+            <h3>{{localizeHeart "delve" "connection"}}</h3>
+            {{editor actor.system.connection target="system.connection" button=true editable=editable owner=owner}}
+        </div>
 
         <!-- {{> itemListSection type="equipment" list=actor.proxy.equipment description_path="equipment" showActivate=true}} -->
         {{> itemListSection type="resource" list=actor.proxy.resources description_path="resources"}}
