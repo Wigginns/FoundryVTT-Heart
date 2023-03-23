@@ -61,11 +61,19 @@ export default class HeartActorSheet extends HeartSheetMixin(ActorSheet) {
         html.find('[data-action=item-roll]').click(async ev => {
           const uuid = $(ev.currentTarget).closest('[data-item-id]').data('itemId');
           const item = await fromUuid(uuid);
-          let rollOptions = {'stepIncrease': false};
+          let rollOptions = {'stepIncrease': false, 'stepDecrease': false};
 
+          // TODO: Make step increase/decrease less of a mess?
           if (ev.shiftKey) {
-            rollOptions.stepIncrease = true
+            rollOptions.stepIncrease = true;
           }
+          if (ev.altKey) {
+            rollOptions.stepDecrease = true;
+          }
+          if (ev.altKey && ev.shiftKey) {
+            rollOptions = {'stepIncrease': false, 'stepDecrease': false};
+          }
+
           const roll = game.heart.rolls.ItemRoll.build({item}, {}, rollOptions);
           await roll.evaluate({async: true});
 
@@ -74,12 +82,32 @@ export default class HeartActorSheet extends HeartSheetMixin(ActorSheet) {
               speaker: {actor: this.actor.id}
           });
         });
+      
+        html.find('[data-action=roll]').click(async ev => {
+            const roll = await  game.heart.rolls.HeartRoll.build({
+                character: this.actor.id
+            });
+
+            roll.toMessage({
+                speaker: {actor: this.actor.id}
+            });
+        });
+
+        html.find('[data-action=stress-roll]').click(async ev => {
+            const roll = await game.heart.rolls.StressRoll.build({
+                character: this.actor.id
+            });
+
+            roll.toMessage({
+                speaker: {actor: this.actor.id}
+            });
+        });
 
         html.find('[data-item-id] [data-action=activate]').click(async ev => {
-          const target = $(ev.currentTarget);
-          const uuid = target.closest('[data-item-id]').data('itemId');
-          const item = await fromUuid(uuid);
-          item.update({'system.active': true});
+            const target = $(ev.currentTarget);
+            const uuid = target.closest('[data-item-id]').data('itemId');
+            const item = await fromUuid(uuid);
+            item.update({'system.active': true});
         });
 
         html.find('[data-item-id] [data-action=deactivate]').click(async ev => {
@@ -87,6 +115,20 @@ export default class HeartActorSheet extends HeartSheetMixin(ActorSheet) {
             const uuid = target.closest('[data-item-id]').data('itemId');
             const item = await fromUuid(uuid);
             item.update({'system.active': false});
+        });
+
+        html.find('[data-item-id] [data-action=complete]').click(async ev => {
+          const target = $(ev.currentTarget);
+          const uuid = target.closest('[data-item-id]').data('itemId');
+          const item = await fromUuid(uuid);
+          item.update({'system.complete': true});
+        });
+
+        html.find('[data-item-id] [data-action=uncomplete]').click(async ev => {
+            const target = $(ev.currentTarget);
+            const uuid = target.closest('[data-item-id]').data('itemId');
+            const item = await fromUuid(uuid);
+            item.update({'system.complete': false});
         });
     }
 
