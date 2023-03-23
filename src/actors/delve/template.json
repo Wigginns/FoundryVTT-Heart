@@ -5,13 +5,9 @@
             "tier": [],
             "stress": "",
             "resistance": 10,
-            "resistanceMax": 10,
-            "resources": [],
-            "equipment": [],
             "events": [],
             "connection": "",
-            "description": "",
-            "notes":""
+            "description": ""
         }
     }
 }
