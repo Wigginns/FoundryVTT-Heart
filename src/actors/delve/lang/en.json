@@ -14,6 +14,6 @@
         "tier":"Tier",
         "notes":"Notes",
         "inactive-items": "Inactive Items",
-        "inactive-items-description": "Here you'll find items that were directly added to the character sheet, but were marked inactive (which hides them from the normal layout)."
+        "inactive-items-description": "Here you'll find items that were directly added to the delve sheet, but were marked inactive (which hides them from the normal layout)."
     }
 }
