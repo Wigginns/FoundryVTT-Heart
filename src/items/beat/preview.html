@@ -1,3 +1,5 @@
 {{#> "heart:items/base/preview.html" showComplete=true showActivate=true}}
-    <div>{{{localizeHeart item.system.description}}}</div>
+    <div style="background-color: {{#if item.system.complete}}#c5ffc5{{/if}};">
+        {{{localizeHeart item.system.description}}} <b>({{{localizeHeart item.system.type}}})</b>
+    </div>
 {{/ "heart:items/base/preview.html"}}
