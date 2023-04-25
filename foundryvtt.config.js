@@ -11,5 +11,4 @@ module.exports = {
     },
     githubRepo: "hitcherland/foundryvtt-heart",
     githubBranch: "release",
-    foundryvttPath: "/home/bcowley/foundryuserdata/Data",
 };
